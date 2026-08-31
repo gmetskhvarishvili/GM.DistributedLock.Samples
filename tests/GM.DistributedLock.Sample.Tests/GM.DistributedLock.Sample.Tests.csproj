@@ -5,6 +5,14 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
+
+        <!--
+          Warnings are errors here too (inherited from Directory.Build.props). This design analyzer
+          is relaxed for test code only, because it conflicts with test conventions rather than flag
+          a defect:
+            CA1707 - the mandated test name style is Method_Scenario_ExpectedResult, which uses underscores.
+        -->
+        <NoWarn>$(NoWarn);CA1707</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
