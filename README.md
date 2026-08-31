@@ -28,11 +28,13 @@ with one config setting. Targets **.NET 10**.
 
 | Method | Route | Purpose |
 | --- | --- | --- |
-| `POST` | `/inventory/{sku}/reserve` | Reserves one unit; returns `reserved` and `remaining` |
-| `GET` | `/inventory/{sku}` | Returns the remaining stock |
+| `POST` | `/api/v1/inventory/{sku}/reserve` | Reserves one unit; returns `reserved` and `remaining` |
+| `GET` | `/api/v1/inventory/{sku}` | Returns the remaining stock |
+| `GET` | `/health/live` | Liveness probe (no downstream checks) |
+| `GET` | `/health/ready` | Readiness probe |
 
 Seeded SKUs: `widget` (5 in stock) and `gadget` (100). Hammer
-`POST /inventory/widget/reserve` concurrently and you'll see exactly five `reserved: true`
+`POST /api/v1/inventory/widget/reserve` concurrently and you'll see exactly five `reserved: true`
 responses.
 
 ## Running
